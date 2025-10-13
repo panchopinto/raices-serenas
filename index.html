@@ -1,79 +1,78 @@
+
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="manifest" href="manifest.webmanifest">
+<title>Pasiflora — Repositorio</title>
 <link rel="stylesheet" href="assets/css/style.css"/>
-<meta name="theme-color" content="#0b0f14"/>
-<title data-i18n="app.title">Pasiflora — Repositorio</title>
-<meta name="description" content="Pasiflora (Passiflora caerulea): nombres, usos, aplicaciones, beneficios. Con visor 3D/AR. PWA offline."/>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<meta name="description" content="Repositorio educativo sobre la flor de la Pasiflora (Passiflora caerulea): nombre científico, usos, aplicaciones y beneficios. Incluye visor 3D y AR."/>
 </head><body>
 <div class="header"><div class="header-inner">
-  <div class="title">🌺 <span data-i18n="app.title">Pasiflora — Repositorio</span></div>
-  <span class="badge">GitHub-ready · PWA</span>
+  <div class="title">🌺 <span class="es">Pasiflora — Repositorio</span><span class="en hidden">Passionflower — Repository</span></div>
+  <span class="badge">GitHub-ready · Offline friendly</span>
   <div class="controls">
-    <button class="ctrl-btn" id="btnNarrar" title="Narrar">🗣️</button>
-    <button class="ctrl-btn" id="btnZoom" title="Zoom">🔍</button>
-    <button class="ctrl-btn" id="btnExpo" title="Modo exposición">🖼️</button>
+    <button class="ctrl-btn" id="btnNarrar">🗣️</button>
+    <button class="ctrl-btn" id="btnZoom">🔍</button>
     <button class="lang-toggle" id="btnES">ES</button>
     <button class="lang-toggle" id="btnEN">EN</button>
-    <button class="install-btn hidden">📥 Instalar</button>
   </div>
 </div></div>
 
 <div class="container" id="main">
   <div class="grid">
     <article class="card">
-      <h2>🌺 Pasiflora azul (<i>Passiflora caerulea</i>)</h2>
-      <div class="tag" data-i18n="hero.devices">PC · Tablet · Celular · Oculus Quest</div>
-      <div class="tag" data-i18n="hero.common">Archivo listo para ver en distintos dispositivos</div>
+      <h2>🌺 <span class="es">Pasiflora azul</span><span class="en hidden">Blue passionflower</span> (<i>Passiflora caerulea</i>)</h2>
+      <div class="tag">PC · Tablet · Celular · Oculus Quest</div>
+      <div class="tag"><span class="es">Archivo listo para ver en distintos dispositivos</span><span class="en hidden">Ready for all devices</span></div>
       <div class="row" style="margin-top:12px">
-        <a class="btn btn-3d" data-track="open-3d" href="viewer3d.html?model=assets/models/passiflora_caerulea.glb&title=%F0%9F%8C%BA%20Pasiflora%20%28Passiflora%20caerulea%29" data-i18n="btn.view3d">👁️ Ver en 3D</a>
-        <a class="btn btn-ar" data-track="open-ar" href="viewerar.html?model=assets/models/passiflora_caerulea.glb&title=%F0%9F%8C%BA%20Pasiflora%20%28Passiflora%20caerulea%29" data-i18n="btn.viewar">📱 Ver en AR</a>
+        <a class="btn btn-3d" href="viewer3d.html?model=assets/models/passiflora_caerulea.glb&title=%F0%9F%8C%BA%20Pasiflora%20%28Passiflora%20caerulea%29" data-i18n="btn3d">👁️ <span class="es">Ver en 3D</span><span class="en hidden">View 3D</span></a>
+        <a class="btn btn-ar" href="viewerar.html?model=assets/models/passiflora_caerulea.glb&title=%F0%9F%8C%BA%20Pasiflora%20%28Passiflora%20caerulea%29" data-i18n="btnar">📱 <span class="es">Ver en AR</span><span class="en hidden">View in AR</span></a>
       </div>
       <hr class="sep"/>
-      <div class="section-title" data-i18n="names.title">Nombres comunes</div>
-      <div class="kv"><div data-i18n="names.items">Mburucuyá / Pasionaria / Flor de la pasión</div></div>
-      <div class="section-title" data-i18n="uses.title">Usos tradicionales y actuales</div>
+      <div class="section-title"><span class="es">Nombres comunes</span><span class="en hidden">Common names</span></div>
       <div class="kv">
-        <div data-i18n="uses.a">Infusiones calmantes...</div>
-        <div data-i18n="uses.b">Fitoterapia...</div>
-        <div data-i18n="uses.c">Ornamental...</div>
+        <div>🇨🇱 <b><span class="es">Mburucuyá / Pasionaria / Flor de la pasión</span><span class="en hidden">Passionflower / Blue passionflower</span></b></div>
       </div>
-      <div class="section-title" data-i18n="apps.title">¿A qué se puede aplicar?</div>
+      <div class="section-title"><span class="es">Usos tradicionales y actuales</span><span class="en hidden">Traditional and current uses</span></div>
       <div class="kv">
-        <div data-i18n="apps.a">Apoyo en higiene del sueño...</div>
-        <div data-i18n="apps.b">Recursos didácticos...</div>
-        <div data-i18n="apps.c">Demostraciones AR/VR...</div>
+        <div>🌿 <span class="es"><b>Infusiones calmantes:</b> hojas y flores en tisanas para ansiedad leve y favorecer el sueño.</span><span class="en hidden"><b>Soothing infusions:</b> leaves and flowers as teas for mild anxiety and sleep.</span></div>
+        <div>🧪 <span class="es"><b>Fitoterapia:</b> base de extractos estandarizados en cápsulas y gotas.</span><span class="en hidden"><b>Phytotherapy:</b> standardized extracts in capsules and drops.</span></div>
+        <div>🏡 <span class="es"><b>Ornamental:</b> trepadora vistosa para jardines, cercos y pérgolas.</span><span class="en hidden"><b>Ornamental:</b> striking vine for gardens, fences and pergolas.</span></div>
       </div>
-      <div class="section-title" data-i18n="benefits.title">Beneficios</div>
+      <div class="section-title"><span class="es">¿A qué se puede aplicar?</span><span class="en hidden">Applications</span></div>
       <div class="kv">
-        <div data-i18n="benefits.a">Efecto sedante suave...</div>
-        <div data-i18n="benefits.b">Alto valor educativo...</div>
-        <div data-i18n="benefits.c">Favorece polinizadores...</div>
+        <div>🧘 <span class="es">Apoyo en higiene del sueño y relajación (material educativo).</span><span class="en hidden">Sleep hygiene and relaxation support (educational material).</span></div>
+        <div>📚 <span class="es">Recursos didácticos en botánica, morfología floral y polinización.</span><span class="en hidden">Didactic resources in botany, flower morphology and pollination.</span></div>
+        <div>🧑‍🏫 <span class="es">Demostraciones AR/VR para laboratorios escolares.</span><span class="en hidden">AR/VR demos for school labs.</span></div>
       </div>
-      <div class="section-title" data-i18n="cautions.title">Precauciones</div>
+      <div class="section-title"><span class="es">Beneficios</span><span class="en hidden">Benefits</span></div>
       <div class="kv">
-        <div data-i18n="cautions.a">Uso medicinal...</div>
-        <div data-i18n="cautions.b">Evitar en embarazo...</div>
+        <div>😌 <span class="es">Efecto sedante suave y ansiolítico leve reportado en la literatura herbal.</span><span class="en hidden">Mild sedative and anxiolytic effects reported in herbal literature.</span></div>
+        <div>🎓 <span class="es">Alto valor educativo por su compleja estructura floral (androceo, gineceo, corona).</span><span class="en hidden">High educational value due to complex floral structure.</span></div>
+        <div>🌍 <span class="es">Favorece polinizadores en jardines urbanos.</span><span class="en hidden">Supports pollinators in urban gardens.</span></div>
+      </div>
+      <div class="section-title"><span class="es">Precauciones</span><span class="en hidden">Cautions</span></div>
+      <div class="kv">
+        <div>⚠️ <span class="es">Uso medicinal: consultar fuentes oficiales y profesionales de salud; puede interactuar con fármacos sedantes.</span><span class="en hidden">Medicinal use: consult official sources/health professionals; may interact with sedatives.</span></div>
+        <div>👶 <span class="es">Evitar en embarazo/lactancia salvo indicación profesional.</span><span class="en hidden">Avoid during pregnancy/breastfeeding unless indicated by a professional.</span></div>
       </div>
     </article>
 
     <article class="card">
-      <h3 data-i18n="how.title">Cómo usar este repositorio</h3>
+      <h3>🧭 <span class="es">Cómo usar este repositorio</span><span class="en hidden">How to use this repo</span></h3>
       <div class="kv">
-        <div data-i18n="how.a">El modelo 3D está en assets/models/passiflora_caerulea.glb.</div>
-        <div data-i18n="how.b">Usa los botones 👁️ Ver en 3D y 📱 Ver en AR para abrir el visor.</div>
-        <div data-i18n="how.c">Funciona online y offline (PWA). AR requiere navegador compatible.</div>
-        <div class="notice">Tip: usa 🖼️ para Modo Exposición (ferias/VR).</div>
+        <div>🗃️ <span class="es">El modelo 3D está en <b>assets/models/passiflora_caerulea.glb</b>.</span><span class="en hidden">3D model lives at <b>assets/models/passiflora_caerulea.glb</b>.</span></div>
+        <div>🧩 <span class="es">Usa los botones <b>👁️ Ver en 3D</b> y <b>📱 Ver en AR</b> para abrir el visor.</span><span class="en hidden">Use <b>👁️ View 3D</b> and <b>📱 View in AR</b> buttons.</span></div>
+        <div>🌐 <span class="es">Funciona online y en modo local (sin conexión) excepto AR en iOS/Android que requiere navegador compatible.</span><span class="en hidden">Works online and offline (local); AR on iOS/Android needs a compatible browser.</span></div>
       </div>
     </article>
   </div>
 </div>
 
 <div class="footer">
-  <div class="credits" data-i18n="footer.credits">Hecho con ❤️ para el Liceo Bicentenario...</div>
+  <div class="credits">
+    <div>Creado por: 👨‍💻 Francisco Pinto · 👩‍🏫 Belén Acuña</div>
+    <div>Hecho con ❤️ para el Liceo Bicentenario de Excelencia Polivalente San Nicolás — Proyecto Educativo · 🥽</div>
+  </div>
 </div>
 
-<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 </body></html>
