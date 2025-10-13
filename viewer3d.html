@@ -1,31 +1,43 @@
 
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>👁️ 3D Viewer — Pasiflora</title>
 <link rel="stylesheet" href="assets/css/style.css"/>
+<title data-i18n="viewer.title3d">Visor 3D</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head><body>
 <div class="header"><div class="header-inner">
-  <div class="title">👁️ <span class="es">Visor 3D</span><span class="en hidden">3D Viewer</span></div>
-  <div class="badge">Model Viewer</div>
+  <div class="title">👁️ <span data-i18n="viewer.title3d">Visor 3D</span></div>
+  <div class="badge" data-i18n="hotspots.title">Anotaciones</div>
   <div class="controls">
+    <button class="ctrl-btn" id="btnNarrar">🗣️</button>
+    <button class="ctrl-btn" id="btnExpo">🖼️</button>
     <button class="lang-toggle" id="btnES">ES</button>
     <button class="lang-toggle" id="btnEN">EN</button>
   </div>
 </div></div>
+
 <div class="container" id="main">
   <div class="card">
     <h3 id="mv-title">🌺 Pasiflora</h3>
     <div class="model-hero">
       <model-viewer id="mv" camera-controls exposure="1.1" shadow-intensity="1" auto-rotate autoplay
-        src=""
-        style="width:100%;height:100%;border-radius:16px"></model-viewer>
+        src="" poster="assets/img/presenter.jpg" style="width:100%;height:100%;border-radius:16px">
+        <button class="hotspot" slot="hotspot-1" data-position="0m 0.03m 0.02m" data-normal="0 1 0">Sépalos</button>
+        <button class="hotspot" slot="hotspot-2" data-position="0m 0.02m 0.03m" data-normal="0 1 0">Pétalos</button>
+        <button class="hotspot" slot="hotspot-3" data-position="0m 0.03m -0.02m" data-normal="0 1 0">Corona</button>
+        <button class="hotspot" slot="hotspot-4" data-position="0m 0.04m 0m" data-normal="0 1 0">Estambres</button>
+        <button class="hotspot" slot="hotspot-5" data-position="0m 0.05m 0m" data-normal="0 1 0">Estigma</button>
+      </model-viewer>
     </div>
     <div class="row" style="margin-top:12px">
-      <a class="btn" href="index.html">⬅️ <span class="es">Volver</span><span class="en hidden">Back</span></a>
+      <a class="btn" href="index.html">⬅️ <span data-i18n="viewer.back">Volver</span></a>
+      <button class="btn" id="btnTour">▶️ Recorrido</button>
     </div>
+    <div class="notice">Tip: con 🖼️ activas el modo exposición (pantalla completa y UI grande).</div>
   </div>
 </div>
+
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
   const p = new URLSearchParams(location.search);
@@ -33,5 +45,15 @@
   const title = decodeURIComponent(p.get("title")||"🌺 Pasiflora");
   document.getElementById("mv").setAttribute("src", src);
   document.getElementById("mv-title").textContent = title;
+
+  const tour = [
+    "0deg 65deg 0.5m", "45deg 75deg 0.45m", "90deg 70deg 0.45m", "-45deg 60deg 0.45m"
+  ];
+  let idx=0;
+  document.getElementById("btnTour").addEventListener("click", ()=>{
+    const mv=document.getElementById("mv");
+    mv.cameraOrbit = tour[idx%tour.length];
+    idx++;
+  });
 </script>
 </body></html>

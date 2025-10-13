@@ -1,0 +1,23 @@
+
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+<title>Métricas locales</title>
+</head><body>
+<div class="container">
+  <h2>📊 Métricas locales</h2>
+  <p>Eventos almacenados en <code>localStorage</code> (se vacían con “Borrar”).</p>
+  <div class="row">
+    <button class="btn" id="btnLoad">🔄 Cargar</button>
+    <button class="btn" id="btnClear">🗑️ Borrar</button>
+  </div>
+  <pre id="out" style="white-space:pre-wrap;background:#0f1622;border:1px solid #1f2834;border-radius:12px;padding:12px;margin-top:12px"></pre>
+</div>
+<script>
+  const out=document.getElementById('out');
+  function load(){ out.textContent = JSON.stringify(JSON.parse(localStorage.getItem('metrics')||'[]'), null, 2); }
+  document.getElementById('btnLoad').onclick=load;
+  document.getElementById('btnClear').onclick=()=>{ localStorage.removeItem('metrics'); load(); };
+  load();
+</script>
+</body></html>

@@ -1,46 +1,77 @@
 
 (function(){
-  const qs = (k)=>new URLSearchParams(location.search).get(k)||"";
-  const es = document.querySelectorAll(".es");
-  const en = document.querySelectorAll(".en");
-  function setLang(lang){
-    localStorage.setItem("lang", lang);
-    if(lang==="en"){
-      es.forEach(n=>n.classList.add("hidden"));
-      en.forEach(n=>n.classList.remove("hidden"));
-    }else{
-      en.forEach(n=>n.classList.add("hidden"));
-      es.forEach(n=>n.classList.remove("hidden"));
-    }
-  }
-  const saved = localStorage.getItem("lang")||"es";
-  setLang(saved);
-  const btnES = document.getElementById("btnES");
-  const btnEN = document.getElementById("btnEN");
-  if(btnES) btnES.addEventListener("click",()=>setLang("es"));
-  if(btnEN) btnEN.addEventListener("click",()=>setLang("en"));
+  // Buttons
+  const $ = (s)=>document.querySelector(s);
+  const $$ = (s)=>document.querySelectorAll(s);
+  // language
+  const btnES = $("#btnES"), btnEN = $("#btnEN");
+  if(btnES) btnES.addEventListener("click",()=>I18N.set("es"));
+  if(btnEN) btnEN.addEventListener("click",()=>I18N.set("en"));
 
-  // Simple narration for main content
-  function speak(text){
+  // Narrator
+  function speak(text, lang){
     try{
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = saved==="en" ? "en-US" : "es-ES";
+      u.lang = lang==="en" ? "en-US" : "es-ES";
       speechSynthesis.speak(u);
     }catch(e){}
   }
-  const narrBtn = document.getElementById("btnNarrar");
+  const narrBtn = $("#btnNarrar");
   if(narrBtn){
     narrBtn.addEventListener("click", ()=>{
-      const main = document.getElementById("main");
-      if(main) speak(main.innerText.trim().slice(0, 2000));
+      const lang = I18N.get();
+      const main = $("#main");
+      if(main) speak(main.innerText.slice(0,2000), lang);
     });
   }
 
-  // Zoom cursor toggle
-  const btnZoom = document.getElementById("btnZoom");
+  // Zoom cursor
+  const btnZoom = $("#btnZoom");
   if(btnZoom){
     btnZoom.addEventListener("click", ()=>{
+      document.body.classList.toggle("zoomed");
       document.body.style.cursor = document.body.style.cursor ? "" : "zoom-in";
     });
+  }
+
+  // Expo mode
+  const btnExpo = $("#btnExpo");
+  if(btnExpo){
+    btnExpo.addEventListener("click", ()=>{
+      document.body.classList.toggle("expo");
+      document.querySelectorAll(".card").forEach(c=>c.style.fontSize = document.body.classList.contains("expo") ? "1.15rem" : "");
+      if(document.fullscreenElement){
+        document.exitFullscreen();
+      }else{
+        document.documentElement.requestFullscreen().catch(()=>{});
+      }
+    });
+  }
+
+  // PWA install
+  let deferredPrompt=null;
+  window.addEventListener("beforeinstallprompt", (e)=>{ e.preventDefault(); deferredPrompt = e; $(".install-btn")?.classList.remove("hidden"); });
+  const btnInstall = $(".install-btn");
+  if(btnInstall) btnInstall.addEventListener("click", async ()=>{
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice; deferredPrompt=null;
+    btnInstall.classList.add("hidden");
+  });
+
+  // Metrics (localStorage-based)
+  function track(ev, data={}){
+    const storeKey="metrics";
+    const arr = JSON.parse(localStorage.getItem(storeKey)||"[]");
+    arr.push({ev, t:Date.now(), data});
+    localStorage.setItem(storeKey, JSON.stringify(arr));
+  }
+  $$("[data-track]").forEach(el=>{
+    el.addEventListener("click",()=>track(el.getAttribute("data-track")));
+  });
+
+  // Register service worker
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
   }
 })();
